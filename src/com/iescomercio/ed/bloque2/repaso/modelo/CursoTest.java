@@ -17,7 +17,17 @@ class CursoTest {
 	
 	@Test
 	void testEliminarAlumno() {
-		fail("Not yet implemented");
+		Boolean haPasado = false;
+		try {
+			c.eliminarAlumno("12345678A");
+		} catch (Exception e) {
+			haPasado=true;
+		}
+		assertFalse(c.estaRegistrado("12345678A"));
+		assertFalse(haPasado);
+		assertThrows(Exception.class, () -> c.eliminarAlumno("12"));
+		Exception e = assertThrows(Exception.class, () -> c.eliminarAlumno("12"));
+		assertEquals("El dni no tiene la longitud adecuada", e.getMessage());
 	}
 
 	@Test
