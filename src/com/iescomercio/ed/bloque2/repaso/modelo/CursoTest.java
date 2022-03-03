@@ -44,7 +44,8 @@ class CursoTest {
 
 	@Test
 	void testCurso() {
-		fail("Not yet implemented");
+		c=new Curso();
+		assertEquals(0, c.numeroAlumnos());
 	}
 
 	@Test
