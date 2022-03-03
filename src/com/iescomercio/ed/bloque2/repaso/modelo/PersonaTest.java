@@ -4,13 +4,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.iescomercio.ed.junit.Persona;
+import com.iescomercio.ed.bloque2.repaso.modelo.Persona;
 
 class PersonaTest {
-	
+
 	@Test
 	void testPersonaStringStringString() {
-		Persona p= new Persona("12345678A","Perico","Palotes");
+		Persona p = new Persona("12345678A", "Perico", "Palotes");
 		assertEquals("12345678A", p.getDni());
 		assertEquals("Perico", p.getNombre());
 		assertEquals("Palotes", p.getApellido1());
@@ -18,13 +18,26 @@ class PersonaTest {
 
 	@Test
 	void testGetDni() {
-		Persona p= new Persona("12345678A","Perico","Palotes");
+		Persona p = new Persona("12345678A", "Perico", "Palotes");
 		assertEquals("12345678A", p.getDni());
 	}
 
+//	EL METODO SetDni ESTA MAL, REVISAR (es porque mira lenght y no lenght-1)
 	@Test
 	void testSetDni() {
-		fail("Not yet implemented");
+		Persona p = new Persona("12345678A", "Perico", "Palotes");
+		Boolean haPasado = false;
+		
+		try {
+			p.setDni("87654321B");
+		} catch (Exception e1) {
+			haPasado = true;
+		}
+		assertEquals("87654321B", p.getDni());
+		assertFalse(haPasado);
+		assertThrows(Exception.class, () -> p.setDni("987654321"));
+		Exception e = assertThrows(Exception.class, () -> p.setDni("987654321"));
+		assertEquals("El ultimo caracter introducido no es una letra", e.getMessage());
 	}
 
 	@Test
