@@ -50,7 +50,9 @@ class CursoTest {
 
 	@Test
 	void testNumeroAlumnos() {
-		fail("Not yet implemented");
+		assertEquals(1, c.numeroAlumnos());
+		c=new Curso();
+		assertEquals(0, c.numeroAlumnos());
 	}
 
 }
