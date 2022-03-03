@@ -2,15 +2,22 @@ package com.iescomercio.ed.bloque2.repaso.modelo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.iescomercio.ed.bloque2.repaso.modelo.Persona;
 
 class PersonaTest {
+	
+	private Persona p;
+	
+	@BeforeEach
+	void metodoBeforeEach() {
+		p = new Persona("12345678A", "Perico", "Palotes");
+	}
 
 	@Test
 	void testPersonaStringStringString() {
-		Persona p = new Persona("12345678A", "Perico", "Palotes");
 		assertEquals("12345678A", p.getDni());
 		assertEquals("Perico", p.getNombre());
 		assertEquals("Palotes", p.getApellido1());
@@ -18,14 +25,12 @@ class PersonaTest {
 
 	@Test
 	void testGetDni() {
-		Persona p = new Persona("12345678A", "Perico", "Palotes");
 		assertEquals("12345678A", p.getDni());
 	}
 
 //	EL METODO SetDni ESTA MAL, REVISAR (es porque mira lenght y no lenght-1)
 	@Test
 	void testSetDni() {
-		Persona p = new Persona("12345678A", "Perico", "Palotes");
 		Boolean haPasado = false;
 		
 		try {
@@ -42,13 +47,13 @@ class PersonaTest {
 
 	@Test
 	void testGetNombre() {
-		Persona p = new Persona("12345678A", "Perico", "Palotes");
 		assertEquals("Perico", p.getNombre());
 	}
 
 	@Test
 	void testSetNombre() {
-		fail("Not yet implemented");
+		p.setNombre("Juanito");
+		assertEquals("Juanito", p.getNombre());
 	}
 
 	@Test
